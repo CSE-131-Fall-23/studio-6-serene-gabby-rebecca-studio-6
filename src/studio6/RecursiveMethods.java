@@ -14,7 +14,13 @@ public class RecursiveMethods {
 	public static double geometricSum(int n) {
 		
 			// FIXME compute the geometric sum for the first n terms recursively
-			return 0;
+		if (n == 0) {
+			return 0.0;
+		}
+		else {
+			double fraction = Math.pow(0.5, n);
+			return fraction + geometricSum(n-1);
+		}
 		
 	}
 
@@ -60,7 +66,18 @@ public class RecursiveMethods {
 	public static void circlesUponCircles(double xCenter, double yCenter, double radius,
 			double radiusMinimumDrawingThreshold) {
 		
+	if (radius <radiusMinimumDrawingThreshold) {
+		return;
+	}
+	 StdDraw.circle(xCenter,yCenter,radius);
+	 
+	circlesUponCircles(xCenter,yCenter+radius,radius/3,radiusMinimumDrawingThreshold);
+	circlesUponCircles(xCenter,yCenter-radius,radius/3,radiusMinimumDrawingThreshold);
+	circlesUponCircles(xCenter+radius,yCenter,radius/3,radiusMinimumDrawingThreshold);
+	circlesUponCircles(xCenter-radius,yCenter,radius/3,radiusMinimumDrawingThreshold);
 		// FIXME
+		
+		
 	}
 
 }
